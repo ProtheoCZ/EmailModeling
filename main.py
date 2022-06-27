@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import networkx as nx
+import os
+
 
 
 def load_site():
@@ -34,6 +36,7 @@ def load_dimacs(filename):
 # nx.set_node_attributes(G, {2: "red", 1: "blue"}, name="color")
 # print(nx.get_node_attributes(G, 'color')[2])
 
-G = load_dimacs('C125-9.txt')
+
+G = load_dimacs('C125-9.mtx')
 nx.draw_networkx(G, None, True, True)
 plt.show()
