@@ -2,13 +2,10 @@ import json
 
 import matplotlib.pyplot as plt
 import networkx as nx
-import os
-
-def load_site():
-    pass
+from fa2 import ForceAtlas2
 
 
-def add_node_params():
+def add_node_params(site):
     pass
     # output/input trust, dict s neighbor nodes
 
@@ -75,7 +72,33 @@ def networkx_to_json(graph):
 # nx.set_node_attributes(G, {2: "red", 1: "blue"}, name="color")
 # print(nx.get_node_attributes(G, 'color')[2])
 
+forceatlas2 = ForceAtlas2(
+                        # Behavior alternatives
+                        outboundAttractionDistribution=True,  # Dissuade hubs
+                        linLogMode=False,  # NOT IMPLEMENTED
+                        adjustSizes=False,  # Prevent overlap (NOT IMPLEMENTED)
+                        edgeWeightInfluence=1.0,
 
-# G = load_dimacs('C125-9.mtx')
+                        # Performance
+                        jitterTolerance=1.0,  # Tolerance
+                        barnesHutOptimize=True,
+                        barnesHutTheta=1.2,
+                        multiThreaded=False,  # NOT IMPLEMENTED
+
+                        # Tuning
+                        scalingRatio=2.0,
+                        strongGravityMode=False,
+                        gravity=1.0,
+
+                        # Log
+                        verbose=True)
+
+G = load_dimacs('email-EUall.txt')
+print(nx.nodes(G))
+
+
+# positions = forceatlas2.forceatlas2_networkx_layout(G, pos=None, iterations=2000)
+nx.write_gexf(G, "email-EUall.gexf", version="1.2draft")
+
 # nx.draw_networkx(G, None, True, True)
 # plt.show()
