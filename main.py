@@ -1,4 +1,5 @@
 import json
+import random
 
 import matplotlib.pyplot as plt
 import networkx as nx
@@ -60,6 +61,26 @@ def set_graph_attributes(g, filename):
                 counter += 1
                 if counter % 1000 == 0:
                     print(str(counter) + " nodes had their attrs set")
+
+
+def reduce_network_size(g, node_count):
+    if isinstance(g, nx.Graph):
+        start_node = g.nodes[str(random.randint(1, g.number_of_nodes()))]
+        ret_graph = nx.Graph()
+        ret_graph.add_node(start_node)
+
+        node_queue = [start_node]
+        current_node_idx = 0
+        while ret_graph.number_of_nodes() < node_count:
+            current_node = node_queue[current_node_idx]
+            current_node_idx += 1
+            for node in g.neighbors(current_node):
+                node_queue.append(node)
+                ret_graph.add_node(g.nodes[current_node])
+                ret_graph.add_edge(current_node, node)
+
+        return ret_graph
+
 
 
 # G = nx.Graph()
