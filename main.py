@@ -65,19 +65,49 @@ def set_graph_attributes(g, filename):
 
 def reduce_network_size(g, node_count):
     if isinstance(g, nx.Graph):
-        start_node = g.nodes[str(random.randint(1, g.number_of_nodes()))]
+        start_node_id = str(random.randint(1, g.number_of_nodes()))
+        start_node = g.nodes[start_node_id]
         ret_graph = nx.Graph()
-        ret_graph.add_node(start_node)
+        ret_graph.add_node(
+            start_node_id,
+            # x=start_node['x'],
+            # y=start_node['y'],
+            # size=start_node['size'],
+            # displayed_color=start_node['color'],
+            # label=start_node['label'],
+            # id=start_node_id,
+            age=start_node['age'],
+            gender=start_node['gender']
+        )
 
-        node_queue = [start_node]
+        node_queue = [start_node_id]
         current_node_idx = 0
+        edge_id = 1
         while ret_graph.number_of_nodes() < node_count:
             current_node = node_queue[current_node_idx]
             current_node_idx += 1
             for node in g.neighbors(current_node):
                 node_queue.append(node)
-                ret_graph.add_node(g.nodes[current_node])
-                ret_graph.add_edge(current_node, node)
+                node_to_add = g.nodes[current_node]
+                ret_graph.add_node(
+                    node,
+                    # x=node_to_add['x'],
+                    # y=node_to_add['y'],
+                    # size=node_to_add['size'],
+                    # displayed_color=node_to_add['color'],
+                    # label=node_to_add['label'],
+                    # id=node,
+                    age=node_to_add['age'],
+                    gender=node_to_add['gender']
+                )
+
+                ret_graph.add_edge(current_node,
+                                   node,
+                                   displayed_color='rgb(0,0,0)',
+                                   size=1,
+                                   id=edge_id
+                                   )
+                edge_id += 1
 
         return ret_graph
 
@@ -119,8 +149,11 @@ set_graph_attributes(G, 'soc-pokec/soc-pokec-profiles.txt')
 
 # print(nx.nodes(G))
 # positions = forceatlas2.forceatlas2_networkx_layout(G, pos=None, iterations=2000)
-nx.write_gexf(G, "test/soc-pokec-relationships.gexf", version="1.2draft")
-
+for i in range(10):
+    graph = reduce_network_size(G, 30000)
+    print("network size reduced")
+    nx.write_gexf(graph, "test/soc-pokec-relationships_" + str(i) + ".gexf", version="1.2draft")
+    print("network # " + str(i) + "written")
 # nx.draw_networkx(G, None, True, True)
 # plt.show()
 
