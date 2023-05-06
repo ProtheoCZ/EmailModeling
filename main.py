@@ -149,11 +149,11 @@ set_graph_attributes(G, 'soc-pokec/soc-pokec-profiles.txt')
 
 # print(nx.nodes(G))
 # positions = forceatlas2.forceatlas2_networkx_layout(G, pos=None, iterations=2000)
-for i in range(10):
-    graph = reduce_network_size(G, 30000)
+for i in range(1):
+    graph = reduce_network_size(G, 300000)
     print("network size reduced")
     nx.write_gexf(graph, "test/soc-pokec-relationships_" + str(i) + ".gexf", version="1.2draft")
-    print("network # " + str(i) + "written")
+    print("network # " + str(i) + " written")
 # nx.draw_networkx(G, None, True, True)
 # plt.show()
 
