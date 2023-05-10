@@ -13,8 +13,8 @@ def add_node_params(site):
 
 def load_dimacs(filename, skip_first_two_lines=True):
     with open(filename) as file:
-    # file = open(filename, 'r')
-    # lines = file.readlines()
+        # file = open(filename, 'r')
+        # lines = file.readlines()
         graph = nx.Graph()
         counter = 0
         for line in file:
@@ -52,10 +52,12 @@ def set_graph_attributes(g, filename):
                 attributes_dict = {
                     node_id:
                         {
-                        "gender": gender,
-                         # "region": region,
-                         "age": age
-                         }
+                            "attributes": {
+                                "gender": gender,
+                                # "region": region,
+                                "age": age
+                            }
+                        }
                 }
                 nx.set_node_attributes(g, attributes_dict)
                 counter += 1
@@ -110,7 +112,6 @@ def reduce_network_size(g, node_count):
                 edge_id += 1
 
         return ret_graph
-
 
 
 # G = nx.Graph()

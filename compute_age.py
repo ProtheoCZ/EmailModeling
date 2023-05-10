@@ -21,8 +21,10 @@ def json_to_nx(json_graph):
             displayed_color=node['color'],
             label=node['label'],
             id=node['id'],
-            age=node['attributes']['age'],
-            gender=node['attributes']['gender']
+            attributes={
+                "age": node['attributes']['age'],
+                "gender": node['attributes']['gender']
+            }
         )
 
     for edge in json_graph['edges']:
@@ -41,15 +43,15 @@ def json_to_nx(json_graph):
 def set_age(graph):
     for node in graph.nodes:
         full_node = graph.nodes[node]
-        if full_node['age'] == "0" or full_node['age'] == 0:
+        if full_node['attributes']['age'] == "0" or full_node['attributes']['age'] == 0:
             sum_age = 0
             number_of_neighbors = 0
             for neighbor in graph.neighbors(node):
-                sum_age += int(graph.nodes[neighbor]['age'])
+                sum_age += int(graph.nodes[neighbor]['attributes']['age'])
                 number_of_neighbors += 1
-            graph.nodes[node]['age'] = round(sum_age/number_of_neighbors)
+            graph.nodes[node]['attributes']['age'] = round(sum_age/number_of_neighbors)
         else:
-            graph.nodes[node]['age'] = int(full_node['age'])
+            graph.nodes[node]['attributes']['age'] = int(full_node['attributes']['age'])
     print("age_set")
     return graph
 
@@ -65,8 +67,10 @@ def nx_to_json(graph):
             "x": graph.nodes[node]["x"],
             "y": graph.nodes[node]["y"],
             "id": graph.nodes[node]["id"],
-            "age": graph.nodes[node]["age"],
-            "gender": graph.nodes[node]["gender"],
+            "attributes": {
+                "age": graph.nodes[node]["attributes"]["age"],
+                "gender": graph.nodes[node]["attributes"]["gender"]
+            },
             "color": graph.nodes[node]["displayed_color"],
             "size": graph.nodes[node]["size"]
         }
@@ -87,7 +91,7 @@ def nx_to_json(graph):
 
 
 def write_json_graph(json_graph):
-    filename = 'soc-pokec_V3.json'
+    filename = 'soc-pokec_V4.json'
     with open(filename, "w") as json_file:
         json.dump(json_graph, json_file)
 
