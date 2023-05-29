@@ -1,6 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import json
+import scipy
 
 
 def json_loader(json_graph_name):
@@ -40,12 +41,24 @@ def plot_degree_distribution(G):
     x = [degree for degree, count in sorted_degrees]
     y = [count for degree, count in sorted_degrees]
 
+    approximate_dist_func(x, y)
     plt.figure(figsize=(10, 6))
     plt.scatter(x, y)
     plt.xlabel('Degree')
     plt.ylabel('Count')
     plt.title('Degree Distribution')
+    ax = plt.gca()
+    ax.set_ylim([0, 19+0])
     plt.show()
+
+
+def approximate_dist_func(x_points, y_points):
+    def exponent_func(x, y):
+        return x ** (-y)
+
+    vals, _ = curve_fit(exponent_func, x_points, y_points)
+    exponent = vals[0]
+    print('exponent is ' + exponent)
 
 
 def degree_distribution(graph_name):
@@ -54,4 +67,4 @@ def degree_distribution(graph_name):
     plot_degree_distribution(graph)
 
 
-degree_distribution('editedGraph.json')
+degree_distribution('small_graph.json')
