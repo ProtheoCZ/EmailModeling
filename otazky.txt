@@ -1,0 +1,8 @@
+Jak dal s relatability
+potvrdit lnk implementaci
+jak s fe, jaky endpointy a miru konfigurace
+jak s citacema
+jak aproximovat fci deg dist
+jak s prilohama, jaky skripty prilozit
+datum odevzdani
+jak s gpt generated kodem
