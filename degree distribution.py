@@ -1,7 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import json
-import scipy
+from scipy.optimize import curve_fit
 
 
 def json_loader(json_graph_name):
@@ -41,15 +41,20 @@ def plot_degree_distribution(G):
     x = [degree for degree, count in sorted_degrees]
     y = [count for degree, count in sorted_degrees]
 
-    approximate_dist_func(x, y)
+    normalized_cumulative_y_degree_counts = [1-(sum(y[:i])/sum(y)) for i in range(len(y))]
+
+    approximate_dist_func(x, normalized_cumulative_y_degree_counts)
     plt.figure(figsize=(10, 6))
     plt.scatter(x, y)
     plt.xlabel('Degree')
     plt.ylabel('Count')
     plt.title('Degree Distribution')
     ax = plt.gca()
-    ax.set_ylim([0, 19+0])
+    ax.set_ylim([0, 190])
+    ax.set_xlim([0, 190])
     plt.show()
+    for i in range(10):
+        print(str((i+1)**-2.5))
 
 
 def approximate_dist_func(x_points, y_points):
@@ -58,7 +63,7 @@ def approximate_dist_func(x_points, y_points):
 
     vals, _ = curve_fit(exponent_func, x_points, y_points)
     exponent = vals[0]
-    print('exponent is ' + exponent)
+    print('exponent is roughly ' + str(exponent))
 
 
 def degree_distribution(graph_name):
@@ -67,4 +72,4 @@ def degree_distribution(graph_name):
     plot_degree_distribution(graph)
 
 
-degree_distribution('small_graph.json')
+degree_distribution('emailEuAll.json')

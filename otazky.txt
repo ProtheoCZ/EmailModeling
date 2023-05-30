@@ -4,5 +4,7 @@ jak s fe, jaky endpointy a miru konfigurace
 jak s citacema
 jak aproximovat fci deg dist
 jak s prilohama, jaky skripty prilozit
-datum odevzdani
 jak s gpt generated kodem
+jak popsat aplikaci v prakt casti
+extended summary - muzu opsat z prace?
+jak bude dal dostupny
