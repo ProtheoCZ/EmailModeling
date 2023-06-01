@@ -1,3 +1,4 @@
+1)
 Jak dal s relatability
 potvrdit lnk implementaci
 jak s fe, jaky endpointy a miru konfigurace
@@ -8,3 +9,7 @@ jak s gpt generated kodem
 jak popsat aplikaci v prakt casti
 extended summary - muzu opsat z prace?
 jak bude dal dostupny
+
+2)
+jak s korekturou
+

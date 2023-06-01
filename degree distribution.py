@@ -41,7 +41,7 @@ def plot_degree_distribution(G):
     x = [degree for degree, count in sorted_degrees]
     y = [count for degree, count in sorted_degrees]
 
-    normalized_cumulative_y_degree_counts = [1-(sum(y[:i])/sum(y)) for i in range(len(y))]
+    normalized_cumulative_y_degree_counts = [(sum(y[i:])/sum(y)) for i in range(len(y))]
 
     approximate_dist_func(x, normalized_cumulative_y_degree_counts)
     plt.figure(figsize=(10, 6))
@@ -53,6 +53,8 @@ def plot_degree_distribution(G):
     ax.set_ylim([0, 190])
     ax.set_xlim([0, 190])
     plt.show()
+
+    #todo delete this, just for testing
     for i in range(10):
         print(str((i+1)**-2.5))
 
