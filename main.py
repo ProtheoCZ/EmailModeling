@@ -13,8 +13,6 @@ def add_node_params(site):
 
 def load_dimacs(filename, skip_first_two_lines=True):
     with open(filename) as file:
-        # file = open(filename, 'r')
-        # lines = file.readlines()
         graph = nx.Graph()
         counter = 0
         for line in file:
@@ -157,5 +155,4 @@ for i in range(1):
     print("network # " + str(i) + " written")
 # nx.draw_networkx(G, None, True, True)
 # plt.show()
-
 # generate_barabasi_albert_graph(20000, 1, "barabasi-albert_test.gexf")
