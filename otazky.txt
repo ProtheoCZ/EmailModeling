@@ -12,4 +12,7 @@ jak bude dal dostupny
 
 2)
 jak s korekturou
-
+jak s cd
+relatability co vychazi na 3 procenta
+multiple origin
+zapocitat beta do lnk
