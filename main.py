@@ -3,7 +3,7 @@ import random
 
 import matplotlib.pyplot as plt
 import networkx as nx
-from fa2 import ForceAtlas2
+
 
 
 def load_dimacs(filename, skip_first_two_lines=True):

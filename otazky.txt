@@ -14,5 +14,6 @@ jak bude dal dostupny
 jak s korekturou
 jak s cd
 relatability co vychazi na 3 procenta
-multiple origin
+multiple origin, tu samou zpravu siri vice botu
 zapocitat beta do lnk
+udelat obdobu bety v rel anebo jenom siritele?
