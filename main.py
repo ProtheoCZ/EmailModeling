@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import networkx as nx
 
 
-
 def load_dimacs(filename, skip_first_two_lines=True):
     with open(filename) as file:
         graph = nx.Graph()
