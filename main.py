@@ -111,14 +111,16 @@ def generate_full_graph(size):
     nx.write_gexf(G, "full_graph.gexf")
 
 
-G = load_dimacs('soc-pokec/soc-pokec-relationships.txt', False)
+G = load_dimacs('email-Eu-core.txt', False)
 print("graph loaded")
-set_graph_attributes(G, 'soc-pokec/soc-pokec-profiles.txt')
+nx.write_gexf(G, "email-Eu-core.gexf", version="1.2draft")
 
-for i in range(1):
-    graph = reduce_network_size(G, 300000)
-    print("network size reduced")
-    nx.write_gexf(graph, "test/soc-pokec-relationships_" + str(i) + ".gexf", version="1.2draft")
-    print("network # " + str(i) + " written")
+# set_graph_attributes(G, 'soc-pokec/soc-pokec-profiles.txt')
+
+# for i in range(1):
+#     graph = reduce_network_size(G, 300000)
+#     print("network size reduced")
+#     nx.write_gexf(graph, "test/soc-pokec-relationships_" + str(i) + ".gexf", version="1.2draft")
+#     print("network # " + str(i) + " written")
 
 # generate_barabasi_albert_graph(20000, 1, "barabasi-albert_test.gexf")
