@@ -57,5 +57,5 @@ def population_distribution_check(graph_name):
         print(population_group_distribution)
 
 
-color_population('emailEuCore')
-population_distribution_check('emailEuCore')
+color_population('editedGraph')
+population_distribution_check('editedGraph')
