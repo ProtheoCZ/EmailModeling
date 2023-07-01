@@ -20,6 +20,6 @@ import json
 # print("edges: " + str(len(edges)))
 
 
-with open('c:/Users/Tomas/PycharmProjects/emailModelingBe/graphData/emailEuCore.json') as json_file:
+with open('c:/Users/Tomas/PycharmProjects/emailModelingBe/graphData/emailEuAll.json') as json_file:
     json_graph = json.load(json_file)
     print(len(json_graph['edges']))

@@ -20,6 +20,7 @@ RESULT_FOLDER_PATH2 = '../emailModelingBe/fullSimStats2'
 RESULT_FOLDER_PATH3 = '../emailModelingBe/fullSimStats3'
 RESULT_FOLDER_PATH4 = '../emailModelingBe/fullSimStats4'
 RESULT_FOLDER_PATH5 = '../emailModelingBe/fullSimStats5'
+RESULT_FOLDER_PATH_MERGED = '../emailModelingBe/fullSimStatsLab/Merged'
 TIME_EVOLUTION_RESULT_FOLDER_PATH = '../emailModelingBe/rumourTimeEvolution/All/'
 TIME_EVOLUTION_FILE_NAME = 'd002a01.json'
 # TIME_EVOLUTION_MAX_FILE_NAME = 'd01a03_max.json'
@@ -62,7 +63,7 @@ def plot_heat_map(param_name, result_folder_path, graph_size):
 
     print(df)
     plt.figure(figsize=(10, 8))
-    ax = sns.heatmap(df, vmin=0, vmax=500)
+    ax = sns.heatmap(df, vmin=0, vmax=2500)
     ax.invert_yaxis()
     ax.set_xlabel('Pravděpodobnost změny stavu z šiřitele na potlačovatele - alfa')  # alfa
     ax.set_ylabel('Pravděpodobnost spontánního zastavení šíření  - delta')  # delta
@@ -112,10 +113,10 @@ def plot_population_evolution(evolutions_file_path, run_count, is_max_run=False)
         plt.show()
 
 
-# plot_heat_map(MAX_NODE_COUNT, RESULT_FOLDER_PATH4, 1000)
+plot_heat_map(AVG_NODE_COUNT, RESULT_FOLDER_PATH_MERGED, 365572)
 # plot_heat_map(AVG_NODE_COUNT, RESULT_FOLDER_PATH4, 1005)
 
-plot_population_evolution(TIME_EVOLUTION_RESULT_FOLDER_PATH + TIME_EVOLUTION_FILE_NAME, 100)
+# plot_population_evolution(TIME_EVOLUTION_RESULT_FOLDER_PATH + TIME_EVOLUTION_FILE_NAME, 100)
 # plot_population_evolution(TIME_EVOLUTION_RESULT_FOLDER_PATH + TIME_EVOLUTION_MAX_FILE_NAME, 100)
 # plot_population_evolution(TIME_EVOLUTION_RESULT_FOLDER_PATH + 'd01a10.json', 100)
 

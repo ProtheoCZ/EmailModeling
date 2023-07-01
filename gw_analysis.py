@@ -4,7 +4,7 @@ import os
 import numpy as np
 from matplotlib import pyplot as plt
 
-GW_PATH = 'c:/Users/Tomas/PycharmProjects/emailModelingBe/fullSimStatsGw/Sim_004/'
+GW_PATH = 'c:/Users/Tomas/PycharmProjects/emailModelingBe/fullSimStatsGw/Sim_008/'
 WIDTH = 'width'
 MEDIAN_NODE_DEPTH = 'median_node_depth'
 
@@ -58,7 +58,7 @@ def get_gw_stats(gw_path):
 
 
 
-# get_gw_stats(GW_PATH)
+get_gw_stats(GW_PATH)
 
 
-plot_stats(GW_PATH)
+plot_stats(GW_PATH, WIDTH)
