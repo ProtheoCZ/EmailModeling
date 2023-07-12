@@ -39,15 +39,15 @@ def plot_stats(gw_path, attr_name):
 
     merged_columns = merge_columns(unconditional_attrs)
 
-    # print(str(len(conditional_attrs)))
-    # print(str(len(set(conditional_attrs))))
-    # conditional_attrs.sort()
-    # print(conditional_attrs)
+    print(str(len(conditional_attrs)))
+    print(str(len(set(conditional_attrs))))
+    conditional_attrs.sort()
+    print(conditional_attrs)
 
-    print(str(len(merged_columns)))
-    print(str(len(set(merged_columns))))
-    merged_columns.sort()
-    print(merged_columns)
+    # print(str(len(merged_columns)))
+    # print(str(len(set(merged_columns))))
+    # merged_columns.sort()
+    # print(merged_columns)
 
 
     # bin_width = 10
@@ -56,7 +56,7 @@ def plot_stats(gw_path, attr_name):
     # plt.ylim(plt.ylim()[0], plt.ylim()[1])
 
     plt.xlim(0, 2000)
-    plt.hist(merged_columns, bins=62)
+    plt.hist(unconditional_attrs, bins=96)
 
 
     # print(max(unconditional_attrs))
