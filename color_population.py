@@ -18,6 +18,14 @@ mirni priznivci covid - 12%
 silni priznivci - 6%
 '''
 
+'''
+code used for coloring population groups for rumour spreading model,
+it only marks the nodes as
+'opponent', 'neutral', 'supporter',
+concrete population groups are determined by rumour spread model in runtime
+'''
+
+
 
 def color_population(graph_name):
     population_groups = ['opponent', 'neutral', 'supporter']
@@ -57,5 +65,5 @@ def population_distribution_check(graph_name):
         print(population_group_distribution)
 
 
-color_population('editedGraph')
-population_distribution_check('editedGraph')
+color_population('EuAll')
+population_distribution_check('EuAll')

@@ -6,6 +6,8 @@ import numpy as np
 from scipy.optimize import curve_fit
 
 
+#code used for plotting degree distribution and approximating degree exponent
+
 def json_loader(json_graph_name):
     file = open(json_graph_name)
     json_file = json.load(file)
@@ -18,7 +20,7 @@ def json_to_nx(json_graph):
     for node in json_graph['nodes']:
         graph.add_node(
             node['id'],
-            )
+        )
 
     for edge in json_graph['edges']:
         graph.add_edge(
@@ -46,10 +48,9 @@ def plot_degree_distribution(G, graph_name):
     normalized_cumulative_y_degree_counts = [(sum(y[i:]) / sum(y)) for i in range(len(y))]
     approximate_dist_func(x, normalized_cumulative_y_degree_counts)
 
-    bins = np.logspace(np.log10(min(x)), np.log10(max(x)), num=20)
+    bins = np.logspace(np.log10(min(x)), np.log10(max(x)), num=20)  # log spaced bins
     x_binned = np.histogram(x, bins=bins)[0]
     y_binned = np.histogram(x, bins=bins, weights=y)[0] / x_binned
-
 
     plt.figure(figsize=(10, 6))
     plt.scatter(bins[:-1], y_binned)
@@ -57,13 +58,13 @@ def plot_degree_distribution(G, graph_name):
     plt.ylabel('Počet vrcholů')
     plt.title('Rozdělení stupňů vrcholů sítě ' + str(graph_name))
 
-
     plt.yscale('log')
     plt.xscale('log')
 
     plt.show()
 
 
+# approximate degree exponent using curve fitting
 def approximate_dist_func(x_points, y_points):
     def exponent_func(x, y):
         return x ** (-y)
@@ -73,13 +74,10 @@ def approximate_dist_func(x_points, y_points):
     print('degree exponent is roughly ' + str(exponent))
 
 
-def degree_distribution(graph_path,graph_name):
+def degree_distribution(graph_path, graph_name):
     json_graph = json_loader(graph_path)
     graph = json_to_nx(json_graph)
-    plot_degree_distribution(graph,graph_name)
+    plot_degree_distribution(graph, graph_name)
 
 
-degree_distribution('../emailModelingBe/graphData/emailEuAll.json', 'EuAll')
-
-
-
+degree_distribution('../emailModelingBe/graphData/EuAll.json', 'EuAll')

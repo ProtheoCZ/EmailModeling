@@ -1,15 +1,16 @@
 import json
 import os
 
-import numpy as np
 from matplotlib import pyplot as plt
 
-GW_PATH = 'c:/Users/Tomas/PycharmProjects/emailModelingBe/fullSimStatsGw/Sim_008/'
+GW_PATH = '..emailModelingBe/fullSimStats/Sim_001/'
 WIDTH = 'width'
 MEDIAN_NODE_DEPTH = 'median_node_depth'
 
 
-def merge_columns(unconditional_attrs):
+# code for plotting histograms of gw stats
+
+def merge_columns(unconditional_attrs):  # merge columns to bins
     merged_columns = [0 for _ in range(round(max(unconditional_attrs)/50)+1)]
     ret_attrs = []
     for value in unconditional_attrs:
@@ -126,11 +127,6 @@ def get_gw_stats(gw_path):
     print('max node count: ' + str(max(node_counts)))
     print('max width: ' + str(max(widths)))
     print('max median node depth: ' + str(max(median_node_depths)))
-
-
-
-
-
 
 
 get_gw_stats(GW_PATH)
